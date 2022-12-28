@@ -8,12 +8,12 @@
 	  <div class="container-fluid">
 	    <div class="row mb-2">
 	      <div class="col-sm-6">
-	        <h1 class="m-0">Category</h1>
+	        <h1 class="m-0">Subcategory</h1>
 	      </div><!-- /.col -->
 	      <div class="col-sm-6">
 	        <ol class="breadcrumb float-sm-right">
 	          <li class="breadcrumb-item"><a href="#">Home</a></li>
-	          <li class="breadcrumb-item active">Catgeory</li>
+	          <li class="breadcrumb-item active">Subcategory</li>
 	        </ol>
 	      </div><!-- /.col -->
 	    </div><!-- /.row -->
@@ -29,7 +29,7 @@
 				<div class="col-12">
 		            <div class="card">
 		              <div class="card-header">
-		                <h3 class="card-title">Category DataTable with default features</h3>
+		                <h3 class="card-title">Subcategory DataTable with default features</h3>
 		                <button class="btn btn-danger btn-sm" style="float:right;" data-toggle="modal" data-target="#myModal">+ Add New</button>
 		              </div>
 		              <!-- /.card-header -->
@@ -38,6 +38,7 @@
 		                	<thead>
 			                	<tr>
 				                    <th>Index</th>
+				                    <th>Subcatgeory Name</th>
 				                    <th>Catgeory Name</th>
 				                    <th>Action</th>
 			                	</tr>
@@ -46,7 +47,8 @@
 		                    	@foreach($data as $key=> $row)
 			                    <tr>
 				                    <td>{{ ++$key }}</td>
-				                    <td>{{ $row->category_name }}</td>
+				                    <td>{{ $row->subcategory_name }}</td>
+				                    <td>{{ $row->category->category_name }}</td>
 				                    <td>
 				                    	<a href=""><i class="fa fa-edit"></i></a>
 				                    	<a href=""><i class="fa fa-trash"></i></a>
@@ -73,23 +75,32 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add Subcategory</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         
-        <form method="POST" action="{{ route('category.store') }}">
+        <form method="POST" action="{{ route('subcategory.store') }}">
         	@csrf
+        	<div class="form-group">
+				<label for="exampleInputEmail1">Category Name</label>
+				<select class="form-control" name="category_id" required>
+					<option selected disabled value="">Choose a category</option>
+					@foreach($cat as $row)
+					<option value="{{ $row->id }}">{{ $row->category_name }}</option>
+					@endforeach
+				</select>
+			</div>
 			<div class="form-group">
-				<label for="exampleInputEmail1">New Catgeory Name</label>
-				<input type="text" name="category_name" class="form-control @error('category_name') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Category" required>
-				@error('category_name')
-	          <span class="invalid-feedback" role="alert">
-	              <strong>{{ $message }}</strong>
-	          </span>
-	      @enderror
+				<label for="exampleInputEmail1">New Subcategory Name</label>
+				<input type="text" name="subcategory_name" class="form-control @error('subcategory_name') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Subcategory" required>
+				@error('subcategory_name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
 			</div>
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>

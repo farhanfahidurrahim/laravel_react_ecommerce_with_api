@@ -40,6 +40,8 @@
 	<link rel="stylesheet" href="{{ asset('public/assets') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 	<link rel="stylesheet" href="{{ asset('public/assets') }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
+	<link rel="stylesheet" href="sweetalert2.min.css">
+
     <!-- Styles -->
     {{-- <link href="{{ asset('public/css/app.css') }}" rel="stylesheet"> --}}
 </head>
@@ -169,15 +171,7 @@
 							              </p>
 							            </a>
 							          </li>
-							          <li class="nav-item">
-							            <a href="pages/widgets.html" class="nav-link">
-							              <i class="nav-icon fas fa-th"></i>
-							              <p>
-							                Widgets
-							                <span class="right badge badge-danger">New</span>
-							              </p>
-							            </a>
-							          </li>
+							          
 							          
 							          <li class="nav-item">
 							            <a href="#" class="nav-link">
@@ -194,19 +188,71 @@
 							                  <p>All Category</p>
 							                </a>
 							              </li>
+							            </ul>
+							          </li>
+
+							          <li class="nav-item">
+							            <a href="#" class="nav-link">
+							              <i class="nav-icon fas fa-table"></i>
+							              <p>
+							                Subcategory
+							                <i class="fas fa-angle-left right"></i>
+							              </p>
+							            </a>
+							            <ul class="nav nav-treeview">
 							              <li class="nav-item">
-							                <a href="pages/tables/data.html" class="nav-link">
+							                <a href="{{ route('subcategory.index') }}" class="nav-link">
 							                  <i class="far fa-circle nav-icon"></i>
-							                  <p>DataTables</p>
-							                </a>
-							              </li>
-							              <li class="nav-item">
-							                <a href="pages/tables/jsgrid.html" class="nav-link">
-							                  <i class="far fa-circle nav-icon"></i>
-							                  <p>jsGrid</p>
+							                  <p>All Subcategory</p>
 							                </a>
 							              </li>
 							            </ul>
+							          </li>
+
+							          <li class="nav-item">
+							            <a href="#" class="nav-link">
+							              <i class="nav-icon fas fa-table"></i>
+							              <p>
+							                Brand
+							                <i class="fas fa-angle-left right"></i>
+							              </p>
+							            </a>
+							            <ul class="nav nav-treeview">
+							              <li class="nav-item">
+							                <a href="{{ route('brand.index') }}" class="nav-link">
+							                  <i class="far fa-circle nav-icon"></i>
+							                  <p>All Brand</p>
+							                </a>
+							              </li>
+							            </ul>
+							          </li>
+
+							          <li class="nav-item">
+							            <a href="#" class="nav-link">
+							              <i class="nav-icon fas fa-table"></i>
+							              <p>
+							                Product
+							                <i class="fas fa-angle-left right"></i>
+							              </p>
+							            </a>
+							            <ul class="nav nav-treeview">
+							              <li class="nav-item">
+							                <a href="{{ route('product.index') }}" class="nav-link">
+							                  <i class="far fa-circle nav-icon"></i>
+							                  <p>All Product</p>
+							                </a>
+							              </li>
+							            </ul>
+							          </li>
+
+							          <li class="nav-item">
+							            <a href="pages/widgets.html" class="nav-link">
+							              <i class="nav-icon fas fa-th"></i>
+							              <p>
+							                Widgets
+							                <span class="right badge badge-danger">New</span>
+							              </p>
+							            </a>
 							          </li>
 							          
 							          <li class="nav-header">LABELS</li>
@@ -296,6 +342,17 @@
 	<script src="{{ asset('public/assets') }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
 	<!-- Page specific script -->
+	<script>
+        $(document).ready(function() {
+            toastr.options.timeOut = 100;
+            @if (Session::has('error'))
+                toastr.error('{{ Session::get('error') }}');
+            @elseif(Session::has('success'))
+                toastr.success('{{ Session::get('success') }}');
+            @endif
+        });
+    </script>
+
 	<script>
 	  $(function () {
 	    $("#example1").DataTable({

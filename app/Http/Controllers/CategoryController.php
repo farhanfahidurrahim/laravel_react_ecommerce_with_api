@@ -19,11 +19,15 @@ class CategoryController extends Controller
     }
 
     public function store(Request $request)
-    {
+    {   
+        $request->validate([
+            'category_name'=>'required|unique:categories',
+        ]);
+
         $data=new Category;
         $data->category_name=$request->category_name;
         $data->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Successfully! Catergory created');
     }
 }

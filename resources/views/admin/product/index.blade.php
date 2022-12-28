@@ -8,12 +8,12 @@
 	  <div class="container-fluid">
 	    <div class="row mb-2">
 	      <div class="col-sm-6">
-	        <h1 class="m-0">Category</h1>
+	        <h1 class="m-0">Products</h1>
 	      </div><!-- /.col -->
 	      <div class="col-sm-6">
 	        <ol class="breadcrumb float-sm-right">
 	          <li class="breadcrumb-item"><a href="#">Home</a></li>
-	          <li class="breadcrumb-item active">Catgeory</li>
+	          <li class="breadcrumb-item active">Product</li>
 	        </ol>
 	      </div><!-- /.col -->
 	    </div><!-- /.row -->
@@ -29,8 +29,8 @@
 				<div class="col-12">
 		            <div class="card">
 		              <div class="card-header">
-		                <h3 class="card-title">Category DataTable with default features</h3>
-		                <button class="btn btn-danger btn-sm" style="float:right;" data-toggle="modal" data-target="#myModal">+ Add New</button>
+		                <h3 class="card-title">All Product DataTable with default features</h3>
+		                <a href="{{ route('product.create') }}" class="btn btn-danger btn-sm" style="float:right;">+ Add New Product</a>
 		              </div>
 		              <!-- /.card-header -->
 		              <div class="card-body">
@@ -38,15 +38,31 @@
 		                	<thead>
 			                	<tr>
 				                    <th>Index</th>
-				                    <th>Catgeory Name</th>
+				                    <th>Image</th>
+				                    <th>Name</th>
+				                    <th>Category</th>
+				                    <th>Subcategory</th>
+				                    <th>Price</th>
+				                    <th>Stock</th>
 				                    <th>Action</th>
 			                	</tr>
 		                	</thead>
 		                    <tbody>
-		                    	@foreach($data as $key=> $row)
+		                    	@foreach($data as $key=>$row)
 			                    <tr>
 				                    <td>{{ ++$key }}</td>
-				                    <td>{{ $row->category_name }}</td>
+				                    <td><img src="{{ asset('public/product/'.$row->image)  }}" style="height:50px; width: 50px;"></td>
+				                    <td>{{ $row->name }}</td>
+				                    <td>{{ $row->category->category_name }}</td>
+				                    <td>{{ $row->subcategory->subcategory_name }}</td>
+				                    <td>{{ $row->price }}</td>
+				                    <td>
+				                    	@if($row->stockout==1)
+				                    	<span class="badge badge-success">Available</span>
+				                    	@else
+				                    	<span class="badge badge-danger">Stockout</span>
+				                    	@endif
+				                    </td>
 				                    <td>
 				                    	<a href=""><i class="fa fa-edit"></i></a>
 				                    	<a href=""><i class="fa fa-trash"></i></a>
@@ -67,39 +83,5 @@
     </section>    
 </div>
 
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        
-        <form method="POST" action="{{ route('category.store') }}">
-        	@csrf
-			<div class="form-group">
-				<label for="exampleInputEmail1">New Catgeory Name</label>
-				<input type="text" name="category_name" class="form-control @error('category_name') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Category" required>
-				@error('category_name')
-	          <span class="invalid-feedback" role="alert">
-	              <strong>{{ $message }}</strong>
-	          </span>
-	      @enderror
-			</div>
-			<button type="submit" class="btn btn-primary">Submit</button>
-		</form>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 @endsection

@@ -29,6 +29,24 @@ Route::group(['namespace'=>'App\Http\Controllers','middleware'=>'is_admin'], fun
         Route::get('/','CategoryController@index')->name('category.index');
         Route::post('/store','CategoryController@store')->name('category.store');
     });
+
+    Route::group(['prefix'=>'admin/subcategory'], function(){
+        Route::get('/','SubcategoriesController@index')->name('subcategory.index');
+        Route::post('/store','SubcategoriesController@store')->name('subcategory.store');
+    });
+
+    //Brand Route...
+    Route::group(['prefix'=>'admin/brand'], function(){
+        Route::get('/','BrandController@index')->name('brand.index');
+        Route::post('/store','BrandController@store')->name('brand.store');
+    });
+
+    //Brand Route...
+    Route::group(['prefix'=>'admin/product'], function(){
+        Route::get('/','ProductController@index')->name('product.index');
+        Route::get('/create','ProductController@create')->name('product.create');
+        Route::post('/store','ProductController@store')->name('product.store');
+    });
 });
 
 
