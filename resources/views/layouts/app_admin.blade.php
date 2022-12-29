@@ -245,33 +245,33 @@
 							            </ul>
 							          </li>
 
-							          <li class="nav-item">
+							          {{-- <li class="nav-item">
 							            <a href="pages/widgets.html" class="nav-link">
 							              <i class="nav-icon fas fa-th"></i>
 							              <p>
-							                Widgets
-							                <span class="right badge badge-danger">New</span>
+							                
+							                <span class="right badge badge-danger"></span>
 							              </p>
 							            </a>
-							          </li>
+							          </li> --}}
 							          
-							          <li class="nav-header">LABELS</li>
+							          <li class="nav-header">Settings</li>
 							          <li class="nav-item">
 							            <a href="#" class="nav-link">
 							              <i class="nav-icon far fa-circle text-danger"></i>
-							              <p class="text">Logout</p>
+							              <p class="text"></p>
 							            </a>
 							          </li>
 							          <li class="nav-item">
 							            <a href="#" class="nav-link">
 							              <i class="nav-icon far fa-circle text-warning"></i>
-							              <p>Warning</p>
+							              <p></p>
 							            </a>
 							          </li>
 							          <li class="nav-item">
 							            <a href="#" class="nav-link">
 							              <i class="nav-icon far fa-circle text-info"></i>
-							              <p>Informational</p>
+							              <p></p>
 							            </a>
 							          </li>
 							        </ul>

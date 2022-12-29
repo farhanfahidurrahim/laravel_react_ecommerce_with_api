@@ -4,6 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Auth;
+use App\Models\User;
+use DB;
+use Mail;
+use App\Mail\ForgotMail;
+use Hash;
 
 class ForgotController extends Controller
 {
