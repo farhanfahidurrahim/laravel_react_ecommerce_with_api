@@ -2,12 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Common from './common/Common';
+import Main from './common/Main';
+
+//important
+import axios from 'axios';
+axios.defaults.baseURL='http://localhost/laravel_react_ecommerce_lv8/api/';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Common />
+    <Main />
   </React.StrictMode>
 );
 

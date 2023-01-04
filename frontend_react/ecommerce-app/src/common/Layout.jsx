@@ -1,4 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+} from "react-router-dom";
 
 class Layout extends Component {
   render() {
@@ -15,8 +21,8 @@ class Layout extends Component {
                 {/* Top Left */}
                 <div className="top-left">
                   <ul className="list-main">
-                    <li><i className="ti-headphone-alt" /> +060 (800) 801-582</li>
-                    <li><i className="ti-email" /> support@shophub.com</li>
+                    <li><i className="ti-headphone-alt" /> +880 1675717825</li>
+                    <li><i className="ti-email" /> support@eshop.com</li>
                   </ul>
                 </div>
                 {/*/ End Top Left */}
@@ -25,10 +31,9 @@ class Layout extends Component {
                 {/* Top Right */}
                 <div className="right-content">
                   <ul className="list-main">
-                    <li><i className="ti-location-pin" /> Store location</li>
                     <li><i className="ti-alarm-clock" /> <a href="#">Daily deal</a></li>
                     <li><i className="ti-user" /> <a href="#">My account</a></li>
-                    <li><i className="ti-power-off" /><a href="login.html#">Login</a></li>
+                    <Link to="/login">Login</Link>
                   </ul>
                 </div>
                 {/* End Top Right */}
@@ -43,7 +48,7 @@ class Layout extends Component {
               <div className="col-lg-2 col-md-2 col-12">
                 {/* Logo */}
                 <div className="logo">
-                  <a href="index.html"><img src="assets/images/logo.png" alt="logo" /></a>
+                  <a href="/"><img src="assets/images/logo.png" alt="logo" /></a>
                 </div>
                 {/*/ End Logo */}
                 {/* Search Form */}
@@ -128,7 +133,7 @@ class Layout extends Component {
           <div className="container">
             <div className="cat-nav-head">
               <div className="row">
-                <div className="col-lg-3">
+                {/* <div className="col-lg-3">
                   <div className="all-category">
                     <h3 className="cat-heading"><i className="fa fa-bars" aria-hidden="true" />CATEGORIES</h3>
                     <ul className="main-category">
@@ -195,7 +200,7 @@ class Layout extends Component {
                       <li><a href="#">denim </a></li>
                     </ul>
                   </div>
-                </div>
+                </div>*/}
                 <div className="col-lg-9 col-12">
                   <div className="menu-area">
                     {/* Main Menu */}
@@ -203,7 +208,7 @@ class Layout extends Component {
                       <div className="navbar-collapse">	
                         <div className="nav-inner">	
                           <ul className="nav main-menu menu navbar-nav">
-                            <li className="active"><a href="#">Home</a></li>
+                            <li className="active"><a href="/">Home</a></li>
                             <li><a href="#">Product</a></li>												
                             <li><a href="#">Service</a></li>
                             <li><a href="#">Shop<i className="ti-angle-down" /><span className="new">New</span></a>
